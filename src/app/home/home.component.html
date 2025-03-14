@@ -1,0 +1,20 @@
+<button class="abort-button" (click)="abortRequests()">
+  Abort requests
+</button>
+
+<div class="container">
+  <div class="grid">
+    <div *ngFor="let image of images; let i = index" 
+         class="grid-item"
+         appIntersection
+         (visible)="fetchImage(i)">
+      <img *ngIf="imageStates[i].url" 
+           [src]="imageStates[i].url" 
+           alt="Random image" 
+           class="image">
+      <div *ngIf="imageStates[i].loading" class="loading">
+        Loading...
+      </div>
+    </div>
+  </div>
+</div>
